@@ -1,6 +1,7 @@
 "use client";
 import React, { use, useState } from "react";
 
+
 export default function TicTacToe() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
@@ -57,9 +58,10 @@ export default function TicTacToe() {
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
       }}
     >
-      <h1 className="text-5xl font-extrabold text-white drop-shadow-lg tracking-wide">
-        Tic-Tac-Toe
-      </h1>
+      <h1 className="text-4xl font-extrabold text-black drop-shadow-lg tracking-wide justify-center hover:scale-105 transition-transform duration-300 mb-4">
+        Tic-Tac-Toe Game 
+     </h1>
+     
 
       <div className="grid grid-cols-3 gap-3 bg-white p-4 rounded-2xl shadow-2xl">
         {board.map((_, i) => renderSquare(i))}
