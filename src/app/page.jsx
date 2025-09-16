@@ -11,7 +11,7 @@ export default function Home() {
       <br />
       Link to <a href="/random-password-generator" className='text-blue-600 underline'>Random Password Generator</a>  
       <br />
-      Link to <a href="/currency-converter" className='text-blue-600 underline'>Random Password Generator</a>  
+      Link to <a href="/currency-converter" className='text-blue-600 underline'>Currency Converter</a>  
       
     </div>
    
