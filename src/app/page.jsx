@@ -10,6 +10,8 @@ export default function Home() {
       Link to <a href="/quiz-app" className='text-blue-600 underline'>Quiz App</a>  
       <br />
       Link to <a href="/random-password-generator" className='text-blue-600 underline'>Random Password Generator</a>  
+      <br />
+      Link to <a href="/currency-converter" className='text-blue-600 underline'>Random Password Generator</a>  
       
     </div>
    
