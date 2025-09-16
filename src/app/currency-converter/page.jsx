@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-export default function CurrencyConverter() {
+export default function CurrencyConverter3D() {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("USD");
   const [toCurrency, setToCurrency] = useState("EUR");
@@ -17,6 +17,7 @@ export default function CurrencyConverter() {
       setRate(data.rates[toCurrency]);
     } catch (err) {
       console.error("Error fetching exchange rate:", err);
+      setRate(null);
     }
   };
 
@@ -37,27 +38,31 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 p-4">
-      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-4">💱 Currency Converter</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-900 via-emerald-500 via-70% to-lime-300 p-6">
+      <div className="w-full max-w-md bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-2xl transform rotate-x-6 -rotate-y-6 transition-transform hover:rotate-x-3 hover:-rotate-y-3">
+        <div className="h-2 w-full rounded-full mb-4 bg-gradient-to-r from-teal-900 via-emerald-500 to-lime-300"></div>
+
+        <h1 className="text-2xl font-bold text-center text-teal-900 mb-6">
+          💱 Currency Converter 
+        </h1>
 
         <div className="mb-4">
-          <label className="block font-medium mb-1">Amount</label>
+          <label className="block font-medium text-teal-800 mb-1">Amount</label>
           <input
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="w-full border p-2 rounded-lg"
+            className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-emerald-400 outline-none text-black"
           />
         </div>
 
-        <div className="flex items-center justify-between mb-4 space-x-2">
+        <div className="flex items-end space-x-2 mb-4">
           <div className="flex-1">
-            <label className="block font-medium mb-1">From</label>
+            <label className="block font-medium text-teal-800 mb-1">From</label>
             <select
               value={fromCurrency}
               onChange={(e) => setFromCurrency(e.target.value)}
-              className="w-full border p-2 rounded-lg"
+              className="w-full border border-gray-300 p-2 rounded-lg text-blue-500"
             >
               <option>USD</option>
               <option>EUR</option>
@@ -69,17 +74,18 @@ export default function CurrencyConverter() {
 
           <button
             onClick={swapCurrencies}
-            className="self-end mb-1 bg-gray-200 p-2 rounded-lg hover:bg-gray-300"
+            className="p-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+            title="Swap"
           >
             🔄
           </button>
 
           <div className="flex-1">
-            <label className="block font-medium mb-1">To</label>
+            <label className="block font-medium text-teal-800 mb-1">To</label>
             <select
               value={toCurrency}
               onChange={(e) => setToCurrency(e.target.value)}
-              className="w-full border p-2 rounded-lg"
+              className="w-full border border-gray-300 p-2 rounded-lg text-black"
             >
               <option>USD</option>
               <option>EUR</option>
@@ -92,17 +98,19 @@ export default function CurrencyConverter() {
 
         <button
           onClick={convert}
-          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-2 rounded-xl shadow-md hover:opacity-90"
+          className="w-full bg-gradient-to-r from-emerald-500 to-cyan-400 text-white font-semibold py-2 rounded-xl shadow-md hover:opacity-90 transition"
         >
           Convert
         </button>
 
         {result && (
-          <div className="mt-4 p-3 bg-gray-100 rounded-xl text-center">
-            <p className="text-lg font-semibold">
+          <div className="mt-4 p-4 bg-gray-100 rounded-xl text-center shadow-inner">
+            <p className="text-lg font-semibold text-teal-900">
               {amount} {fromCurrency} = {result} {toCurrency}
             </p>
-            <p className="text-sm text-gray-500">Rate: 1 {fromCurrency} = {rate} {toCurrency}</p>
+            <p className="text-sm text-gray-600 mt-1">
+              Rate: 1 {fromCurrency} = {rate} {toCurrency}
+            </p>
           </div>
         )}
       </div>
